@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
+import django_heroku
 
+django_heroku.settings(locals())
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +44,16 @@ INSTALLED_APPS = [
     'laboratoriosApp',
 ]
 
+SIMPLE_JWT={
+    'ACCESS_TOKEN_LIFETIME':timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME':timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS':False,
+    'UPDATE_LAST_LOGIN':False,
+    'USER_ID_FIELD':'id',
+    'USER_ID_CLAIM':'user_id'
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,6 +63,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK ={
+    'DEFAUL_PERMISSION_CLASSES':(
+        'rest_framework.perssions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+AUTH_USER_MODEL='laboratoriosApp.labUser'
 
 ROOT_URLCONF = 'laboratoriosMs.urls'
 

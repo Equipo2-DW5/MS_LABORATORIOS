@@ -1,0 +1,54 @@
+
+[
+    { 
+        "model":"laboratoriosApp.Laboratorio",
+        "pk":1,
+        "fields":{
+            "categoria":"Extensión",
+            "descripcion":"Laboratorio de Maquinas Eléctricas",
+            "ubicacion":"Bloque M7",
+            "estado":"M",
+            "aforo":25
+        }
+    },
+    {
+        "model":"laboratoriosApp.Laboratorio",
+        "pk":2,
+        "fields":{
+            "categoria":"Docencia",
+            "descripcion":"Laboratorio de Óptica",
+            "ubicacion":"Bloque 21",
+            "estado":"M",
+            "aforo":14
+        }
+    },
+    
+    
+    {
+        "model":"laboratoriosApp.Laboratorio",
+        "pk":3,
+        "fields":{
+            "categoria":"Investigación-Extensión-Docencia",
+            "descripcion":"Laboratorio de Tecnología y Diseño de Materiales",
+            "ubicacion":"Bloque M17",
+            "estado":"D",
+            "aforo":45
+        }
+    },
+
+    
+    
+    {"model":"laboratoriosApp.Laboratorio",
+        "pk":4,
+        "fields":{
+        "categoria":"Investigación",
+        "descripcion":"Laboratorio de Tecnología y Diseño de Materiales",
+        "ubicacion":"Bloque M17",
+        "estado":"D",
+        "aforo":14
+        }
+    }
+    
+    
+
+]
