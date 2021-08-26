@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenVerifyView
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, ListCreateAPIView
 
 from .models import Laboratorio
 from .serializers import LaboratorioSerializer
@@ -31,6 +31,13 @@ class RetrieveLabById(RetrieveAPIView):
         lab_id=self.kwargs['pk']
         return Laboratorio.objects.filter(pk=lab_id)
 
+class RetrieveLabList(ListCreateAPIView):
+    serializer_class=LaboratorioSerializer
+    queryset=Laboratorio.objects.all()
+    def list(self,request):
+        queryset = self.get_queryset()
+        serializer = LaboratorioSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
-# Create your views here.
+   # Create your views here.
