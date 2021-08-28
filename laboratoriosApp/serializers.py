@@ -6,4 +6,7 @@ class LaboratorioSerializer(serializers.HyperlinkedModelSerializer):
         model=Laboratorio
         fields=("lab_id","categoria","descripcion","estado","aforo")
 
-         
+class PostLaboratorioSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model=Laboratorio
+        fields=("categoria","descripcion","estado","aforo")

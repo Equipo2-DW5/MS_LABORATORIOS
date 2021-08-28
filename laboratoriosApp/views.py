@@ -5,10 +5,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenVerifyView
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
-from rest_framework.generics import RetrieveAPIView, ListCreateAPIView
+from rest_framework.generics import RetrieveAPIView, ListCreateAPIView, CreateAPIView
+from django.shortcuts import get_object_or_404
 
 from .models import Laboratorio
-from .serializers import LaboratorioSerializer
+from .serializers import LaboratorioSerializer, PostLaboratorioSerializer
 
 
 class VerifyTokenView(TokenVerifyView):
@@ -40,4 +41,11 @@ class RetrieveLabList(ListCreateAPIView):
         return Response(serializer.data)
 
 
+
+
+class LabCreate(CreateAPIView):
+    queryset = Laboratorio.objects.all()
+    serializer_class = PostLaboratorioSerializer
+
+    
    # Create your views here.

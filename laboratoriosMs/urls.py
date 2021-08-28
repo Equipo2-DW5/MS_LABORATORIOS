@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework_simplejwt.views import (TokenObtainPairView,TokenRefreshView)
-from laboratoriosApp.views import VerifyTokenView,RetrieveLabById, RetrieveLabList
+from laboratoriosApp.views import VerifyTokenView,RetrieveLabById, RetrieveLabList,LabCreate
 
 urlpatterns=[
     path('token/', TokenObtainPairView.as_view()),
@@ -24,5 +24,6 @@ urlpatterns=[
     path('token/verify/',VerifyTokenView.as_view()),
     path('lab/<int:pk>',RetrieveLabById.as_view()),
     path('lablist/',RetrieveLabList.as_view()),
+    path('createlab/',LabCreate.as_view()),
 
 ]
